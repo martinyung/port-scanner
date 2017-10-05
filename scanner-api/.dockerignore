@@ -1,0 +1,8 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+.dockerignore
+README.md
+env.*
+venv
