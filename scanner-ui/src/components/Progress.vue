@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h1>Hello</h1>
+    <h1>nmap scanner</h1>
     <button @click="portScan">Scan</button>
-    <p>{{ result }}</p>
+    <h4>Scan results:</h4>
+    <li v-for="result in results">
+      {{ result }}
+    </li>
   </div>
 </template>
 
@@ -12,14 +15,14 @@ export default {
 
   data () {
     return {
-      result: 'test'
+      results: []
     }
   },
 
   methods: {
     portScan () {
-      this.$http.get('http://localhost:5000/').then(response => {
-        this.result = response.body
+      this.$http.get('http://localhost:5000/scan').then(response => {
+        this.results = response.body
         console.log(response.body)
       }, response => {
         console.log('fail')
