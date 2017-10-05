@@ -3,9 +3,9 @@
     <h1>nmap scanner</h1>
     <button @click="portScan">Scan</button>
     <h4>Scan results:</h4>
-    <li v-for="result in results">
+    <p v-for="result in results">
       {{ result }}
-    </li>
+    </p>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 
   methods: {
     portScan () {
-      this.$http.get('http://localhost:5000/scan').then(response => {
+      this.$http.get(process.env.API_BASE_URL + '/scan').then(response => {
         this.results = response.body
         console.log(response.body)
       }, response => {
