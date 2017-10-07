@@ -11,14 +11,23 @@ def scan():
 	host = 'vulnweb.com'
 	results = []
 
-	# creating thread for different scans setting
-	scanner1 = threading.Thread(target=scanner('-PS -F', host, results))
-	scanner2 = threading.Thread(target=scanner('-PA -F', host, results))
+	# creating thread for different scan settings
 
-	scanner1.start()
-	scanner2.start()
+	ack_scan = threading.Thread(target=scanner('-sA', host, results))
+	syn_scan = threading.Thread(target=scanner('-sS', host, results))
+	xmass_scan = threading.Thread(target=scanner('-sX', host, results))
+	null_scan = threading.Thread(target=scanner('-sN', host, results))
+
+	ack_scan.start()
+	syn_scan.start()
+	xmass_scan.start()
+	null_scan.start()
 
 	return jsonify(results)
 
+@app.route('/')
+def index():
+	return 'hello world'
+
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='0.0.0.0')
