@@ -13,10 +13,10 @@ def scan():
 
 	# creating thread for different scan settings
 
-	ack_scan = threading.Thread(target=scanner('-sA', host, results))
-	syn_scan = threading.Thread(target=scanner('-sS', host, results))
-	xmass_scan = threading.Thread(target=scanner('-sX', host, results))
-	null_scan = threading.Thread(target=scanner('-sN', host, results))
+	ack_scan = threading.Thread(target=scanner('-sA -F', host, results))
+	syn_scan = threading.Thread(target=scanner('-sS -F', host, results))
+	xmass_scan = threading.Thread(target=scanner('-sX -F', host, results))
+	null_scan = threading.Thread(target=scanner('-sN -F', host, results))
 
 	ack_scan.start()
 	syn_scan.start()
@@ -25,9 +25,5 @@ def scan():
 
 	return jsonify(results)
 
-@app.route('/')
-def index():
-	return 'hello world'
-
 if __name__ == '__main__':
-	app.run(host='0.0.0.0')
+	app.run(host='0.0.0.0', port='80')
