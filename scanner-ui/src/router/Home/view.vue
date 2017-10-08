@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <div class="header">
-      <h3>{{ pageName }}</h3>
-    </div>
-    <div class="content-container">
+  <div class="home row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="header">
+        <h2>{{ pageName }}</h2>
+      </div>
       <scanner/>
     </div>
   </div>

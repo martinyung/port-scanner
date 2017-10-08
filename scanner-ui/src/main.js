@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import VueProgressBar from 'vue-progressbar'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const options = {
   color: 'rgb(143, 255, 199)',
