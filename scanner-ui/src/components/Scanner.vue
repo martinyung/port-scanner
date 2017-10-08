@@ -1,30 +1,35 @@
 <template>
   <div>
-    <h1>nmap scanner</h1>
     <button @click="portScan">Scan</button>
     <h4>Scan results:</h4>
-    <p v-for="result in results">
-      {{ result }}
+    <p v-for="(result, key) in results">
+      Scan Setting: {{ key }} 
+      <br>
+      Scan Result: {{ result }}
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'progress',
+  name: 'scanner',
 
   data () {
     return {
-      results: []
+      results: {}
     }
   },
 
   methods: {
     portScan () {
+      this.$Progress.start()
+
       this.$http.get(process.env.API_BASE_URL + '/scan').then(response => {
         this.results = response.body
         console.log(response.body)
+        this.$Progress.finish()
       }, response => {
+        this.$Progress.fail()
         console.log('fail')
         return response
       })

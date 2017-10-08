@@ -9,7 +9,7 @@ CORS(app)
 @app.route('/scan')
 def scan():
 	host = 'vulnweb.com'
-	results = []
+	results = {}
 
 	# creating thread for different scan settings
 
