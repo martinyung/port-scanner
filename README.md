@@ -4,7 +4,7 @@ python flask app which perform nmap port scanning on the host: 'vulnweb.com'
 Disclaimer: Network probing or port scanning tools are only permitted when used in conjunction with a residential home network, or if explicitly authorised by the destination host and/or network.
 
 ## Users Guide
-Access the webpage at this url:  
+Access the webpage at:  
 http://nmap-scanner.s3-website-ap-southeast-1.amazonaws.com/  
 
 The scanning techniques are:  
@@ -35,7 +35,7 @@ Backend: `AWS ECS`
 ## Getting Started
 ### Configuration
 
-####Setup AWS config
+#### Setup AWS config  
 Install awscli http://docs.aws.amazon.com/cli/latest/userguide/installing.html  
 ```bash
 $ pip install awscli --upgrade --user
@@ -71,7 +71,7 @@ $ npm install
 $ npm run start
 ```  
 
-The app is running at http://localhost:8080/
+The app will run at http://localhost:8080/
 
 ### Start dockerise flask backend  
 
@@ -88,12 +88,12 @@ start docker container
 $ docker run -p 5000:80 port-scanner 
 ```  
 
-The app is running at http://localhost:5000/
+The app will run at http://localhost:5000/
 
 ### Deploy to AWS
 #### Frontend Deploy to AWS S3
 
-Change Directory  
+Change directory  
 ```bash
 $ cd scanner-ui
 ```  
@@ -112,7 +112,7 @@ Change directory
 $ cd scanner-api
 ```  
 
-Push docker image to AWS ECS Repository  
+Push docker image to AWS ECR http://docs.aws.amazon.com/AmazonECR/latest/userguide/ECR_GetStarted.html  
 1. Retrieve the docker login command  
 ```
 aws ecr get-login --no-include-email --region ap-southeast-1
