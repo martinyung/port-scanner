@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button @click="portScan" class="btn btn-default">Start Scan</button>
+    <button class="btn btn-default" :disabled="scanning" @click="portScan">
+      <icon v-if="scanning" name="refresh" :spin="scanning"></icon>
+      <span>{{ scanning ? 'Scan in progress' : 'Start Scan'}}</span>
+    </button>
     <h3>Scan results:</h3>
     <ul>
       <ol v-for="(result, key) in results">
@@ -17,7 +20,8 @@ export default {
 
   data () {
     return {
-      results: {}
+      results: {},
+      scanning: false
     }
   },
 
@@ -25,14 +29,17 @@ export default {
     portScan () {
       this.results = {}
       this.$Progress.start()
+      this.scanning = true
 
       this.$http.get(process.env.API_BASE_URL + '/scan').then(response => {
         this.results = response.body
-        console.log(this.results)
+        console.log('success')
         this.$Progress.finish()
+        this.scanning = false
       }, response => {
         this.$Progress.fail()
         console.log('fail')
+        this.scanning = false
         return response
       })
     }
@@ -44,7 +51,7 @@ export default {
 button {
   border-radius: 0px;
   width: 170px;
-  height: 40px;
+  height: 50px;
 }
 
 ul, ol {
