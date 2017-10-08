@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Progress from '@/components/Progress'
+import Home from '@/router/Home/view'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Progress',
-      component: Progress
+      name: 'Home',
+      component: Home
     }
   ]
 })
