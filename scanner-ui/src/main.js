@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import VueProgressBar from 'vue-progressbar'
+import Icon from 'vue-awesome/components/Icon'
+import 'vue-awesome/icons'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const options = {
@@ -14,6 +16,7 @@ const options = {
 Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.use(VueProgressBar, options)
+Vue.component('icon', Icon)
 
 /* eslint-disable no-new */
 new Vue({
