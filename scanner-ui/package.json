@@ -8,7 +8,8 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "deploy": "aws s3 cp dist s3://nmap-scanner --recursive --acl public-read"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
