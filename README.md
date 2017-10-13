@@ -3,18 +3,6 @@ python flask app which perform nmap port scanning on the host: 'vulnweb.com'
 
 Disclaimer: Network probing or port scanning tools are only permitted when used in conjunction with a residential home network, or if explicitly authorised by the destination host and/or network.
 
-## Users Guide
-Access the webpage at:  
-http://nmap-scanner.s3-website-ap-southeast-1.amazonaws.com/  
-
-The scanning techniques are:  
-1. TCP SYN scan,`-sS`  
-2. ACK scan, `-sA`  
-3. TCP Null scan, `-sN`  
-4. Xmas scan, `-sX`  
-
-All scans are using `-F` flag to reduce scan time.  
-
 ## Developers Guide
 OS:   
 `macOS Sierra 10.12.6`
@@ -91,7 +79,8 @@ $ docker run -p 5000:80 port-scanner
 The app will run at http://localhost:5000/
 
 ### Deploy to AWS
-#### Frontend Deploy to AWS S3
+#### Frontend Deploy to AWS S3  
+create a bucket `nmap-scanner` in aws s3  
 
 Change directory  
 ```bash
@@ -132,6 +121,3 @@ docker push [your_docker_image_repository_url:latest]
 ```
 
 Update task and service in AWS ECS
-
-
-
